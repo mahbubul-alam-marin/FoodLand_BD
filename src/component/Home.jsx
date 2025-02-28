@@ -7,6 +7,15 @@ import Choco from '../assets/picture/chocolate.svg'
 import Meat from '../assets/picture/meat.svg'
 import Lunch from  '../assets/picture/lunch.svg'
 import Dessert from '../assets/picture/Dessert.svg'
+import Ads from '../assets/picture/Ads.svg'
+import Pasta from '../assets/picture/BaconPasta.svg'
+import Burger from '../assets/picture/burger.svg'
+import ChickenBalls from '../assets/picture/chickenBalls.svg'
+import ChickenRice from '../assets/picture/ChickenRice.svg'
+import Fish from '../assets/picture/fish.svg'
+import FruityPancake from '../assets/picture/fruityPancake.svg'
+import MixedSalad from '../assets/picture/MixedSalad.svg'
+import Strawberry from '../assets/picture/Strawberry.svg'
 import { MdTimer ,MdSlowMotionVideo } from "react-icons/md";
 import { BsFillJournalBookmarkFill } from "react-icons/bs";
 import { ImSpoonKnife } from "react-icons/im";
@@ -23,9 +32,10 @@ const Home = () => {
     },
     {
       id:2,
-      Url:Choco,
-      title:"Chocolate",
+      Url:healty,
+      title:"Healthy"
     },
+    
     {
       id:3,
       Url:Meat,
@@ -41,12 +51,73 @@ const Home = () => {
       Url:Dessert,
       title:"Dessert",
     },
+    
     {
       id:6,
-      Url:healty,
-      title:"Healthy"
-    }
+      Url:Choco,
+      title:"Chocolate",
+    },
   ];
+
+  const Cards=[
+    {
+      id:1,
+      Url:Burger,
+      des:"Gig and juicy Wagyu Beef Cheeseburger",
+      title:"Chicken"
+    },
+    {
+      id:2,
+      Url:Fish,
+      des:"Fresh Lime Roasted Salmon with Ginger Sauce",
+      title:"Fish",
+    },
+    {
+      id:3,
+      Url:Strawberry,
+      des:"Strawberry Oatmeal Pancake with Honey Syrup",
+      title:"Breakfast"
+    },
+    {
+      id:4,
+      Url:MixedSalad,
+      des:"Fresh and Healthy Mixed Mayonnaise Salad",
+      title:"Healthy"
+    },
+    {
+      id:5,
+      Url:ChickenBalls,
+      des:"Chicken Meatballs with Cream Cheese",
+      title:"Meat"
+    },
+    {
+      id:6,
+      Url:Ads,
+      des:" ",
+      title:" ",
+
+    },
+    {
+      id:7,
+      Url:FruityPancake,
+      des:"Fruity Pancake with Orange & Blueberry",
+      title:"Sweet",
+    },
+    {
+      id:8,
+      Url:ChickenRice,
+      des:"The Best Easy One Pot Chicken and Rice",
+      title:"Snack"
+    },
+    {
+      id:9,
+      Url:Pasta,
+      des:"The Creamiest Creamy Chicken and Bacon Pasta",
+      title:"Noodles"
+    }
+
+  ];
+  const excludedIds = [6];
 
 
   return (
@@ -139,6 +210,56 @@ const Home = () => {
 
         </div>
       </section>
+    
+    {/** sections 03 */}
+    
+    <section className='pb-10'>
+      <div className='px-5'>
+      <div className="text-center max-w-2xl mx-auto">
+  <h1 className="text-5xl font-semibold py-5">Simple and tasty recipes</h1>
+  <p className="text-gray-500 text-lg max-w-lg mx-auto">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliquip enim ad minim.
+  </p>
+</div>
+
+
+
+<div className='grid grid-cols-3 py-6'>
+  {Cards.map((link) => (
+    <div key={link.id} className='m-5'>
+      <div>
+        <img src={link.Url} alt="" className='w-368 ' />
+      </div>
+
+      {/* Only show description and details if the card ID is NOT in excludedIds */}
+      {!excludedIds.includes(link.id) && (
+        <>
+          <p className='text-2xl text-left font-semibold py-4 max-w-md'>{link.des}</p>
+          <div className="flex space-x-2 pb-5">
+            <p className="flex bg-gray-200 rounded-2xl w-fit px-1">
+              <MdTimer className="py-2 w-10 h-10" />
+              <span className="py-2 pr-2 text-gray-500">30 Minutes</span>
+            </p>
+            <p className="flex bg-gray-200 rounded-2xl w-fit px-1">
+              <ImSpoonKnife className="py-2 w-10 h-10" />
+              <span className="py-2 pr-2 text-gray-500">{link.title}</span>
+            </p>
+          </div>
+        </>
+      )}
+    </div>
+  ))}
+</div>
+
+
+
+
+
+      </div>
+
+    </section>
+
+
     </div>
   );
 }
