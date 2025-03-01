@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import hero from "../assets/picture/Hero omatoes-sauce-plate 1.svg";
 import profile from "../assets/picture/profile.jpg";
 import healty from "../assets/picture/Healty.svg";
@@ -13,13 +13,21 @@ import Burger from "../assets/picture/burger.svg";
 import ChickenBalls from "../assets/picture/chickenBalls.svg";
 import ChickenRice from "../assets/picture/ChickenRice.svg";
 import Fish from "../assets/picture/fish.svg";
-import ManPic from "../assets/picture/ManPic.svg"
+import ManPic from "../assets/picture/ManPic.svg";
 import FruityPancake from "../assets/picture/fruityPancake.svg";
 import MixedSalad from "../assets/picture/MixedSalad.svg";
 import Strawberry from "../assets/picture/Strawberry.svg";
-import { MdTimer, MdSlowMotionVideo } from "react-icons/md";
+import Vegetable from "../assets/picture/vegetable.svg";
+import Sweetfoods from "../assets/picture/sweetFoods.svg";
+import Steak from "../assets/picture/Steak.svg";
+import BeforeCooks from "../assets/picture/beforeCooks.svg";
+import { MdTimer, MdSlowMotionVideo, MdVerified } from "react-icons/md";
 import { BsFillJournalBookmarkFill } from "react-icons/bs";
 import { ImSpoonKnife } from "react-icons/im";
+import { FaRegComment, FaRegBookmark } from "react-icons/fa";
+import { TbLocationShare } from "react-icons/tb";
+import { PiDotsThreeOutlineThin } from "react-icons/pi";
+import { GiSelfLove } from "react-icons/gi";
 
 const Home = () => {
   const Catagories = [
@@ -115,9 +123,16 @@ const Home = () => {
   ];
   const excludedIds = [6];
 
+  const [liked, setLiked] = useState(false);
+
+  const toggleLike = () => {
+    setLiked(!liked);
+  };
+
   return (
     <div>
       {/** section 01 */}
+
       <section className="">
         <div className="py-5 px-5">
           <div className="grid grid-cols-2 ">
@@ -256,34 +271,83 @@ const Home = () => {
         </div>
       </section>
 
-
       {/** Sections 04 */}
 
       <section className="pb-10">
-        <div className="grid grid-cols-2 px-5">
+        <div className="grid grid-cols-2 px-6">
           <div className="text-left my-20">
-            <h1 className="text-5xl w-lg py-4 font-semibold ">Everyone can be a
-            chef in their own kitchen</h1>
+            <h1 className="text-5xl w-lg py-4 font-semibold ">
+              Everyone can be a chef in their own kitchen
+            </h1>
 
-            <p className="text-gray-500 w-lg pb-8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, rerum pariatur. Itaque incidunt, mollitia vitae vel autem et ratione, ipsam eum fuga quasi voluptate temporibus consequuntur.</p>
+            <p className="text-gray-500 w-lg pb-8">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis,
+              rerum pariatur. Itaque incidunt, mollitia vitae vel autem et
+              ratione, ipsam eum fuga quasi voluptate temporibus consequuntur.
+            </p>
 
-            <button className="bg-black rounded-2xl cursor-pointer px-4 py-2 text-white "> Learn More</button>
+            <button className="bg-black rounded-2xl cursor-pointer px-4 py-2 text-white ">
+              {" "}
+              Learn More
+            </button>
           </div>
           <div>
             <img src={ManPic} alt="" />
           </div>
-
         </div>
-
       </section>
 
+      {/**Sections 05 */}
+
+      <section className="pb-10">
+        <div className="py-10 px-8">
+          <div className="text-center max-w-5xl mx-auto pb-6">
+            <h1 className="text-5xl font-semibold py-4">
+              Check out @foodland on Instagram
+            </h1>
+
+            <p className="text-gray-500 text-lg max-w-3xl mx-auto">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla
+              quod nihil magni corrupti, qui expedita eius? Sequi aspernatur,
+              quia similique corporis itaque nisi sunt.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-4 py-8 text-left">
+            <div className="px-2">
+              <div className="grid grid-cols-2 py-4 px-2 text-left">
+                <div className="flex items-center gap-2">
+                  <img
+                    src={profile}
+                    alt="Profile"
+                    className="rounded-full w-10 h-10"
+                  />
+                  <div>
+                    <h1 className="flex items-center font-bold">
+                      Foodland. <MdVerified className="w-4 h-4 text-blue-500" />
+                    </h1>
+
+                    <p className="text-xs font-semibold text-gray-500">
+                      Dhaka, BD
+                    </p>
+                  </div>
+                </div>
+                <div className="text-right font-bold text-2xl">...</div>
+              </div>
+
+              <div className="">
+                <img src={Vegetable} alt="" className="w-full" />
+              </div>
+            </div>
+          </div>
+        </div>
 
 
 
 
 
 
-
+      </section>
     </div>
   );
 };
