@@ -21,13 +21,13 @@ import Vegetable from "../assets/picture/vegetable.svg";
 import Sweetfoods from "../assets/picture/sweetFoods.svg";
 import Steak from "../assets/picture/Steak.svg";
 import BeforeCooks from "../assets/picture/beforeCooks.svg";
+import LOGO from "../assets/picture/FoodLogo.png"
 import { MdTimer, MdSlowMotionVideo, MdVerified } from "react-icons/md";
 import { BsFillJournalBookmarkFill } from "react-icons/bs";
 import { ImSpoonKnife } from "react-icons/im";
-import { FaRegComment, FaRegBookmark } from "react-icons/fa";
+import { FaRegComment, FaHeart, FaRegBookmark } from "react-icons/fa";
 import { TbLocationShare } from "react-icons/tb";
 import { PiDotsThreeOutlineThin } from "react-icons/pi";
-import { GiSelfLove } from "react-icons/gi";
 
 const Home = () => {
   const Catagories = [
@@ -128,6 +128,29 @@ const Home = () => {
   const toggleLike = () => {
     setLiked(!liked);
   };
+
+  const FoodCards = [
+    {
+      id: 1,
+      url:Vegetable,
+      des: "Thenvegetables dishes need to have certain vitamin for those people",
+    },
+    {
+      id: 2,
+      url:Sweetfoods,
+      des: "Sweet food can bring someon into happiness as long as they don't eat to much ",
+    },
+    {
+      id: 3,
+      url:BeforeCooks,
+      des: "What are you doing before start cooking? prepare the  tools or ingredients?",
+    },
+    {
+      id: 4,
+      url:Steak,
+      des: "Steak never be wrong, it's suitable for you who want romantic dinner",
+    },
+  ];
 
   return (
     <div>
@@ -313,40 +336,78 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-4 py-8 text-left">
-            <div className="px-2">
-              <div className="grid grid-cols-2 py-4 px-2 text-left">
-                <div className="flex items-center gap-2">
-                  <img
-                    src={profile}
-                    alt="Profile"
-                    className="rounded-full w-10 h-10"
-                  />
-                  <div>
-                    <h1 className="flex items-center font-bold">
-                      Foodland. <MdVerified className="w-4 h-4 text-blue-500" />
-                    </h1>
+          <div className="grid grid-cols-4 gap-2 py-8 text-left">
+            {/** cols-01 */}
 
-                    <p className="text-xs font-semibold text-gray-500">
-                      Dhaka, BD
+            {FoodCards.map((item) => (
+              <div key={item.id} className="bg-[#dee1ed] rounded-2xl ">
+
+                <div className="grid grid-cols-2 py-4 px-4 text-left">
+                  <div className="flex items-center gap-2">
+                    <img
+                      src={LOGO}
+                      alt="logo"
+                      className="rounded-full w-8 h-8"
+                    />
+                    <div>
+                      <h1 className="flex items-center font-bold">
+                        Foodland.{" "}
+                        <MdVerified className="w-4 h-4 text-blue-500" />
+                      </h1>
+
+                      <p className="text-xs font-semibold text-gray-500">
+                        Dhaka, BD
+                      </p>
+                    </div>
+                  </div>
+                  <div className="text-right font-bold text-2xl">...</div>
+                </div>
+
+                <div className="">
+                  <img src={item.url} alt="" className="w-full" />
+                </div>
+
+                <div className="px-3 py-4">
+                  <div className="flex py-4">
+                    <div className="flex space-x-3 w-45 px-2 text-2xl">
+                      <button onClick={toggleLike}>
+                        <FaHeart className={`${liked ? "text-red-500" : ""}`} />
+                      </button>
+                      <FaRegComment className=" " />
+                      <TbLocationShare className="" />
+                    </div>
+                    <div className="text-2xl w-25">
+                      <PiDotsThreeOutlineThin className="" />
+                    </div>
+                    <div className="text-2xl w-10 px-2">
+                      <FaRegBookmark className="" />
+                    </div>
+                  </div>
+
+                  <div className="flex space-x-2">
+                    <img
+                      src={profile}
+                      alt=""
+                      className="w-5 h-5 rounded-full"
+                    />
+                    <p>
+                      Liked by <span className="font-semibold">craig_love</span>{" "}
+                      and <span className="font-semibold">44686</span>
                     </p>
                   </div>
+                  <p className="text-gray-700 text-sm py-2">
+                    <span className="text-md font-bold">Foodland.</span>
+                    {item.des}
+                  </p>
+                  <time datetime="" className="text-gray-500 text-sm">
+                    September 19
+                  </time>
                 </div>
-                <div className="text-right font-bold text-2xl">...</div>
               </div>
-
-              <div className="">
-                <img src={Vegetable} alt="" className="w-full" />
-              </div>
-            </div>
+            ))}
+            {/** end of cols 01 */}
           </div>
         </div>
-
-
-
-
-
-
       </section>
     </div>
   );
